@@ -46,6 +46,15 @@ def validate_ip(ip_data):  # ПроверОЧКА
     return True
 
 
+def prefix_mask(mask_data):    # Подсчет маски подсети
+    result = 0
+    mask = ip_to_bin_string(mask_data).replace('.', '')    # Просто из маски убираем (.) и считаем 1
+    for v in mask:
+        if int(v) == 1:
+            result += 1
+    return result
+
+
 while True:
     src_ip = input('ip адрес: ').split('.')  # Ввод ip
     src_mask = input('Mask: ').split('.')  # Ввод маски
@@ -56,8 +65,10 @@ while True:
 
     print_result('IP адрес: ', src_ip)
     print_result('Маска подсети: ', src_mask)
+    print('Префикс маски подсети:', prefix_mask(src_mask))
     print_result('IP адрес сети: ', calc_network(src_ip, src_mask))
     print_result('Обратная маска подсети: ', calc_wildcard(src_mask))
+    print('COMPLETE')
 
 # 192.168.99.54
 # 255.255.255.0
