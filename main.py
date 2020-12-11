@@ -46,13 +46,6 @@ def validate_ip(ip_data):  # ПроверОЧКА
     return True
 
 
-def broadcast(ip_data, mask_data):
-    result = []
-    for i in range(IP_PARTS_COUNT):
-        result.append(str(int(ip_data[i]) & int(mask_data[i])))  # & - and (перемножение)
-    return result
-
-
 while True:
     src_ip = input('ip адрес: ').split('.')  # Ввод ip
     src_mask = input('Mask: ').split('.')  # Ввод маски
@@ -61,13 +54,10 @@ while True:
         print('error')
         continue
 
-    print('-' * 62)
-    print_result('ip: ', src_ip)
-    print_result('mask: ', src_mask)
-    print_result('network: ', calc_network(src_ip, src_mask))
-    print_result('wildcard: ', calc_wildcard(src_mask))
-    print_result('broadcast: ', broadcast(src_ip, src_mask))
-    print('-' * 62)
+    print_result('IP адрес: ', src_ip)
+    print_result('Маска подсети: ', src_mask)
+    print_result('IP адрес сети: ', calc_network(src_ip, src_mask))
+    print_result('Обратная маска подсети: ', calc_wildcard(src_mask))
 
 # 192.168.99.54
 # 255.255.255.0
