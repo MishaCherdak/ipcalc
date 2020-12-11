@@ -12,7 +12,7 @@ def ip_to_string(ip_data):  # Получение строки из ip
 def ip_to_bin_string(ip_data):  # Перевод ip в двоичную
     result = []
     for v in ip_data:  # Цикл для перебора 4 значений (i = значение)
-        result.append("{0:08b}".format(int(v)))  # Добавляем полученные 8-октетные значения в список вывода
+        result.append("{0:08b}".format(int(v)))  # Добавляем полученные 8 двоичных цифр в список вывода
     return ip_to_string(result)  # Вызов функции ip_to_string
 
 
